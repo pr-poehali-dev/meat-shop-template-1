@@ -1,35 +1,74 @@
-import { type Config } from "tailwindcss";
+import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        playfair: ["Playfair Display", "serif"],
-        opensans: ["Open Sans", "sans-serif"],
-      },
       colors: {
-        background: {
-          DEFAULT: "#0D0D0D",
-          light: "#1A1A1A",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
-        gold: {
-          DEFAULT: "#D4A45C",
-          light: "#E6BD7A",
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
-        meat: "#8C1C13",
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        // Custom colors
+        gold: "#D4A45C",
+        "gold-light": "#E6BD7A",
         cream: "#F5F0E1",
+        meat: "#8C1C13",
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        slideUp: {
-          "0%": { transform: "translateY(30px)", opacity: "0" },
-          "100%": { transform: "translateY(0)", opacity: "1" },
+        "accordion-down": {
+          from: { height: "0", opacity: "0" },
+          to: { height: "var(--radix-accordion-content-height)", opacity: "1" },
+        },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+            opacity: "1",
+          },
+          to: { height: "0", opacity: "0" },
         },
       },
       animation: {
-        slideUp: "slideUp 0.8s ease-out forwards",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
-} satisfies Config;
+  plugins: [require("tailwindcss-animate")],
+};
+
+export default config;
