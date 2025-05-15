@@ -1,6 +1,5 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -52,33 +51,75 @@
   body {
     @apply bg-background text-cream font-opensans;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-playfair text-gold;
   }
 }
 
 @layer components {
-  .meat-card {
-    @apply relative overflow-hidden bg-background-light rounded-lg border border-gold/20 p-4 transition-all duration-300 hover:border-gold;
-  }
-  
   .gold-button {
     @apply px-6 py-2 bg-gold text-background font-playfair font-medium tracking-wide rounded-sm transition-all hover:bg-gold-light;
   }
-  
+
   .outlined-button {
     @apply px-6 py-2 bg-transparent border-2 border-gold text-gold font-playfair font-medium tracking-wide rounded-sm transition-all hover:bg-gold/10;
   }
+}
 
-  .section-title {
-    @apply text-4xl sm:text-5xl font-playfair font-semibold text-gold mb-8 tracking-wide;
-  }
-  
-  .section-container {
-    @apply container mx-auto py-16 px-4 sm:px-6 md:px-8;
+@layer utilities {
+  .text-gold {
+    @apply text-[#D4A45C];
   }
 
-  .quality-label {
-    @apply inline-block rounded-full px-3 py-1 text-xs font-semibold bg-meat/90 text-cream;
+  .text-cream {
+    @apply text-[#F5F0E1];
+  }
+
+  .bg-gold {
+    @apply bg-[#D4A45C];
+  }
+
+  .bg-gold-light {
+    @apply bg-[#E6BD7A];
+  }
+
+  .border-gold {
+    @apply border-[#D4A45C];
+  }
+
+  .bg-background {
+    @apply bg-[#0D0D0D];
+  }
+
+  .bg-background-light {
+    @apply bg-[#1A1A1A];
+  }
+
+  .font-playfair {
+    font-family: "Playfair Display", serif;
+  }
+
+  .font-opensans {
+    font-family: "Open Sans", sans-serif;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.8s ease-out forwards;
   }
 }
